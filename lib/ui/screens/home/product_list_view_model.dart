@@ -1,12 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_blog/data/dto/product_request.dart';
+import 'package:flutter_blog/data/dto/model_dto/product_dto/product_dto.dart';
 import 'package:flutter_blog/data/dto/response_dto.dart';
 import 'package:flutter_blog/data/model/product.dart';
 import 'package:flutter_blog/data/repository/product_repository.dart';
 import 'package:flutter_blog/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../data/dto/toyresponse_dto.dart';
 
 // 창고데이터
 class ProductListModel {
@@ -22,10 +20,9 @@ class ProductListViewModel extends StateNotifier<ProductListModel?> {
   Ref ref;
 
   Future<void> notifiyInit() async {
-    ToyResponseDTO toyResponseDTO =
-        await ProductRepository().fetchProductList();
+    ResponseDTO responseDTO = await ProductRepository().fetchProductList();
 
-    state = ProductListModel(toyResponseDTO.response);
+    state = ProductListModel(responseDTO.response);
   }
 }
 

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
-import 'package:flutter_blog/ui/components/navigation_item.dart';
+import 'package:flutter_blog/ui/screens/cart/cart_screen.dart';
 import 'package:flutter_blog/ui/screens/category/category_screen.dart';
 import 'package:flutter_blog/ui/screens/home/home_screen.dart';
-import 'package:flutter_blog/ui/screens/mykurly/mykurly_screen.dart';
+import 'package:flutter_blog/ui/screens/my_info/mykurly_screen.dart';
 import 'package:flutter_blog/ui/screens/search/search_screen.dart';
+import 'package:flutter_blog/ui/widgets/navigation_items/custom_navigation_item.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../pages/cart/cart_page.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -44,7 +43,7 @@ class _MainScreenState extends State<MainScreen> {
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                          builder: (context) => CartPage()), // CartPage로 이동
+                          builder: (context) => CartScreen()), // CartPage로 이동
                     );
                   },
                   icon: SvgPicture.asset(
@@ -82,7 +81,7 @@ class _MainScreenState extends State<MainScreen> {
           HomeScreen(),
           CategoryScreen(),
           SearchScreen(),
-          MyKurlyScreen(),
+          MyInfoScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

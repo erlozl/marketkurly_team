@@ -25,6 +25,11 @@ TextStyle basicText() {
       fontSize: 16, fontWeight: FontWeight.w400, color: basicColorB3);
 }
 
+TextStyle basicText02() {
+  return TextStyle(
+      fontSize: 14, fontWeight: FontWeight.w400, color: basicColorB3);
+}
+
 // sub-content
 TextStyle subContents() {
   return TextStyle(

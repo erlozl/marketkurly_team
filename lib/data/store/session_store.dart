@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/data/dto/response_dto.dart';
-import 'package:flutter_blog/data/dto/user_request.dart';
+import 'package:flutter_blog/data/dto/request_dto/user_request/user_request.dart';
 import 'package:flutter_blog/data/model/user.dart';
 import 'package:flutter_blog/data/repository/user_repository.dart';
 import 'package:flutter_blog/main.dart';
@@ -27,11 +27,14 @@ class SessionStore extends SessionUser {
     ResponseDTO responseDTO = await UserRepository().fetchJoin(joinReqDTO);
 
     // 2. 비지니스 로직
-    if (responseDTO.code == 1) {
-      Navigator.pushNamed(mContext!, Move.loginPage);
+    if (responseDTO.response == 1) {
+      Navigator.pushNamed(mContext!, Move.loginScreen);
     } else {
-      ScaffoldMessenger.of(mContext!)
-          .showSnackBar(SnackBar(content: Text(responseDTO.msg)));
+      ScaffoldMessenger.of(mContext!).showSnackBar(
+        SnackBar(
+          content: Text(responseDTO.error!),
+        ),
+      );
     }
   }
 
@@ -40,20 +43,20 @@ class SessionStore extends SessionUser {
     ResponseDTO responseDTO = await UserRepository().fetchLogin(loginReqDTO);
 
     // 2. 비지니스 로직
-    if (responseDTO.code == 1) {
+    if (responseDTO.success == true) {
       // 1. 세션값 갱신
-      this.user = responseDTO.data as User;
-      this.jwt = responseDTO.token;
+      this.user = responseDTO.response as User;
+      // this.jwt = responseDTO.token;
       this.isLogin = true;
 
       // 2. 디바이스에 JWT 저장 (자동 로그인)
-      await secureStorage.write(key: "jwt", value: responseDTO.token);
+      // await secureStorage.write(key: "jwt", value: responseDTO.token);
 
       // 3. 페이지 이동
-      Navigator.pushNamed(mContext!, Move.postListPage);
+      Navigator.pushNamed(mContext!, Move.mainScreen);
     } else {
       ScaffoldMessenger.of(mContext!)
-          .showSnackBar(SnackBar(content: Text(responseDTO.msg)));
+          .showSnackBar(SnackBar(content: Text(responseDTO.error!)));
     }
   }
 

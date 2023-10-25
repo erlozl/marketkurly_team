@@ -1,20 +1,28 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_blog/main.dart';
-import 'package:flutter_blog/ui/pages/post/detail_page/post_detail_page.dart';
+// 창고
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// 1. 창고 데이터
-class RequestParam {
-  int? postDetailId;
-  RequestParam({this.postDetailId});
+class Param {
+  bool isChecked;
+  Param(this.isChecked);
 }
 
-// 2. 창고 (비지니스 로직)
-class ParamStore extends RequestParam {
-  final mContext = navigatorKey.currentContext;
+// 창고데이터
+class ParamStore extends StateNotifier<Param?> {
+  ParamStore(super._state);
+
+  void init() {
+    state = Param(true);
+  }
+
+  void AllChecked() {
+    state = Param(true);
+  }
+
+  void AllDispose() {
+    state = Param(false);
+  }
 }
 
-// 3. 창고 관리자
-final paramProvider = Provider<ParamStore>((ref) {
-  return ParamStore();
+final paramProvider = StateNotifierProvider<ParamStore, Param?>((ref) {
+  return ParamStore(null)..init();
 });
