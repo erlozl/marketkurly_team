@@ -15,6 +15,7 @@ class JoinBirthTextForm extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         labelText: labelText,
+        floatingLabelBehavior: FloatingLabelBehavior.never,
         // 오른쪽 테두리 스타일을 정의
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(

@@ -45,8 +45,8 @@ dependencies:
   flutter_native_splash: ^2.3.4
 
 flutter_native_splash:
-  background_image: assets/images/kurly_bg.png
   fullscreen: true
+  image: assets/images/logo_dark.png
   color: '#5E0080'
   android: true
   ios: true
@@ -54,7 +54,7 @@ flutter_native_splash:
 
   android_12:
     color: '#5E0080'
-    background_image: assets/images/kurly_bg.png
+    image: assets/images/logo_dark.png
 
 dev_dependencies:
   flutter_test:

@@ -7,6 +7,7 @@ import 'package:flutter_blog/data/dto/user_request.dart';
 import 'package:flutter_blog/data/model/pram_store.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_blog/ui/components/checkbox_item.dart';
+import 'package:flutter_blog/ui/components/date_picker.dart';
 import 'package:flutter_blog/ui/components/radio_button.dart';
 import 'package:flutter_blog/ui/pages/auth/join_page/widgets/join_birth_text_form.dart';
 import 'package:flutter_blog/ui/pages/auth/join_page/widgets/join_rich_text_item.dart';
@@ -73,33 +74,7 @@ class JoinForm extends ConsumerWidget {
             funValidator: validatePassword(),
             controller: _password,
           ),
-          Container(
-            child: Row(
-              children: [
-                Container(
-                  width: 100,
-                  child: JoinBirthTextForm(
-                    labelText: "x",
-                    controller: _password,
-                  ),
-                ),
-                Container(
-                  width: 100,
-                  child: JoinBirthTextForm(
-                    labelText: "x",
-                    controller: _password,
-                  ),
-                ),
-                Container(
-                  width: 100,
-                  child: JoinBirthTextForm(
-                    labelText: "x",
-                    controller: _password,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          DatePicker(),
           const SizedBox(height: mediumGap),
           RadioButton(),
           const SizedBox(height: mediumGap),
